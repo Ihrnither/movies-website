@@ -11,7 +11,13 @@ function MyApp({ Component, pageProps }) {
     }
   }, []);
   return (
-    <Scrollbars style={{ width: "100vw", height: "100vh" }}>
+    <Scrollbars
+      style={{ width: "100vw", height: "100vh" }}
+      autoHide
+      autoHideTimeout={1000}
+      autoHideDuration={200}
+      universal
+    >
       <Component {...pageProps} />
     </Scrollbars>
   );
