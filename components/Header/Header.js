@@ -33,6 +33,18 @@ const useStyles = makeStyles({
   input: {
     color: "white",
   },
+  searchIcon: {
+    backgroundColor: "#292A2C",
+    borderRadius: 6,
+    width: 44,
+    height: 44,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    "& button": {
+      color: "white",
+    },
+  },
 });
 
 const Header = (props) => {
@@ -58,17 +70,11 @@ const Header = (props) => {
             <a>Recently Added</a>
           </Link>
         </Grid>
-        <IconButton
-          style={{
-            color: "white",
-            backgroundColor: "#292A2C",
-            borderRadius: 6,
-            width: 44,
-            height: 44,
-          }}
-        >
-          <SearchIcon />
-        </IconButton>
+        <div className={classes.searchIcon}>
+          <IconButton>
+            <SearchIcon />
+          </IconButton>
+        </div>
       </Toolbar>
     </AppBar>
   );

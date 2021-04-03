@@ -6,6 +6,11 @@ export default function Home() {
       <Header />
       <div style={{ marginTop: 112 }}>Hello from Home</div>
       <div style={{ height: 590, background: "red", margin: 40 }}></div>
+      <div style={{ height: 590, background: "red", margin: 40 }}></div>
+      <div style={{ height: 590, background: "red", margin: 40 }}></div>
+      <div style={{ height: 590, background: "red", margin: 40 }}></div>
+      <div style={{ height: 590, background: "red", margin: 40 }}></div>
+      <div style={{ height: 590, background: "red", margin: 40 }}></div>
     </>
   );
 }

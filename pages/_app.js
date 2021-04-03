@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/globals.css";
+import { Scrollbars } from "react-custom-scrollbars";
 
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
@@ -9,7 +10,11 @@ function MyApp({ Component, pageProps }) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-  return <Component {...pageProps} />;
+  return (
+    <Scrollbars style={{ width: "100vw", height: "100vh" }}>
+      <Component {...pageProps} />
+    </Scrollbars>
+  );
 }
 
 export default MyApp;
