@@ -1,0 +1,32 @@
+.header {
+  background-color: #151419;
+  color: white;
+  user-select: none;
+  height: 80px;
+}
+
+.logo {
+  height: 80px;
+  width: 55px;
+  background-color: #fae807;
+  color: #292929;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo h4 {
+  font-weight: bold;
+}
+
+.navlink {
+  margin: 0 12px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.searchIcon {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 6px !important;
+  background-color: #292a2c !important;
+}

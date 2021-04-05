@@ -8,6 +8,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Fira Sans", sans-serif;
+  background-color: #1b1a1f;
+  color: #fff;
 }
 
 a {
@@ -22,5 +24,13 @@ a {
 }
 
 a.active {
+  color: white !important;
+}
+
+.swiper-button-next {
+  color: white !important;
+}
+
+.swiper-button-prev {
   color: white !important;
 }

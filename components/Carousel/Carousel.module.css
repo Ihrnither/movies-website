@@ -1,0 +1,35 @@
+.swiperContainer {
+  position: relative;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  position: relative;
+  width: 1000px;
+  height: 385px;
+  background-size: cover;
+}
+
+.navButtons {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+}
+
+.movieInfo {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 300px;
+  height: 100px;
+}
+
+.movieInfo h4 {
+  font-size: 30px;
+  font-weight: bold;
+}

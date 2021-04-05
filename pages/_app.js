@@ -1,6 +1,20 @@
 import React from "react";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+
+import CustomScrollbar from "../components/CustomScrollbar";
 import "../styles/globals.css";
-import { Scrollbars } from "react-custom-scrollbars";
+
+const theme = createMuiTheme({
+  palette: {
+    type: "dark",
+    primary: {
+      main: "#FAE807",
+    },
+    seconday: {
+      main: "#A6A2A2",
+    },
+  },
+});
 
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
@@ -10,16 +24,13 @@ function MyApp({ Component, pageProps }) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
+
   return (
-    <Scrollbars
-      style={{ width: "100vw", height: "100vh" }}
-      autoHide
-      autoHideTimeout={1000}
-      autoHideDuration={200}
-      universal
-    >
-      <Component {...pageProps} />
-    </Scrollbars>
+    <CustomScrollbar>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </CustomScrollbar>
   );
 }
 

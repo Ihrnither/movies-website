@@ -3,79 +3,43 @@ import {
   AppBar,
   Grid,
   IconButton,
-  InputAdornment,
-  TextField,
   Toolbar,
   Typography,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 
-const useStyles = makeStyles({
-  container: {
-    height: "60",
-    background: "#151419",
-    "& a": {
-      color: "rgba(255, 255, 255, 0.35)",
-      margin: "0 14px",
-    },
-  },
-  logo: {
-    backgroundColor: "#FAE807",
-    height: 80,
-    width: 55,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontWeight: "bold",
-    color: "black",
-  },
-  input: {
-    color: "white",
-  },
-  searchIcon: {
-    backgroundColor: "#292A2C",
-    borderRadius: 6,
-    width: 44,
-    height: 44,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    "& button": {
-      color: "white",
-    },
-  },
-});
+import classes from "./Header.module.css";
 
-const Header = (props) => {
-  const classes = useStyles(props);
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/movies", label: "Movies" },
+  { href: "/shows", label: "TV Shows" },
+  { href: "/recent", label: "Recently Added" },
+];
 
+const Links = () =>
+  links.map((link) => (
+    <Link href={link.href} key={link.href}>
+      <a className={classes.navlink}>{link.label}</a>
+    </Link>
+  ));
+
+const Header = () => {
   return (
-    <AppBar className={classes.container}>
-      <Toolbar>
-        <Typography variant="h4" className={classes.logo}>
-          M
-        </Typography>
-        <Grid container justify="center">
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-          <Link href="/movies">
-            <a>Movies</a>
-          </Link>
-          <Link href="/series">
-            <a>Series</a>
-          </Link>
-          <Link href="/recent">
-            <a>Recently Added</a>
-          </Link>
-        </Grid>
-        <div className={classes.searchIcon}>
-          <IconButton>
+    <AppBar>
+      <div className={classes.header}>
+        <Toolbar>
+          <div className={classes.logo}>
+            <Typography variant="h4">M</Typography>
+          </div>
+          <Grid container justify="center">
+            <Links />
+          </Grid>
+          <IconButton className={classes.searchIcon}>
             <SearchIcon />
           </IconButton>
-        </div>
-      </Toolbar>
+        </Toolbar>
+      </div>
     </AppBar>
   );
 };
