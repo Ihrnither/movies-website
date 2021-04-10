@@ -1,23 +1,23 @@
-import React from "react";
+import { useRef, useState } from "react";
 import SwiperCore, { Navigation } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
+import { ButtonGroup, IconButton, Typography } from "@material-ui/core";
 import NextIcon from "@material-ui/icons/NavigateNext";
 import BeforeIcon from "@material-ui/icons/NavigateBefore";
 
 import classes from "./Carousel.module.css";
-import { ButtonGroup, IconButton, Typography } from "@material-ui/core";
 
 SwiperCore.use([Navigation]);
 
 const movies = [
   {
     name: `Zack Snyder's Justice League`,
-    description: `Thousands of years ago, Steppenwolf and his legions of Parademonss`,
+    description: ` Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga dolor corrupti laboriosam quisquam molestias? Animi perferendis magni eos nisi at. Maiores laudantium perferendis obcaecati in doloribus provident explicabo porro officiis.`,
     image: `https://fr.web.img2.acsta.net/newsv7/21/03/16/16/48/2805053.jpg`,
   },
   {
     name: `John Wick`,
-    description: `Thousands of years ago, Steppenwolf and his legions of Parademons`,
+    description: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam quidem dicta et excepturi non praesentium quisquam, facilis laboriosam ut, magni, voluptates perferendis nostrum laborum beatae suscipit consequuntur animi doloribus maiores!`,
     image: `https://i1.wp.com/www.heyuguys.com/images/2016/10/John-Wick-2.jpg?fit=1200%2C600&ssl=1`,
   },
   {
@@ -28,11 +28,23 @@ const movies = [
 ];
 
 const Carousel = () => {
-  const navigationPrevRef = React.useRef(null);
-  const navigationNextRef = React.useRef(null);
+  const [zoom, setZoom] = useState(false);
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
+
+  const onSwiperHandler = (swiper) => {
+    // Override prevEl & nextEl now that refs are defined
+    swiper.params.navigation.prevEl = navigationPrevRef.current;
+    swiper.params.navigation.nextEl = navigationNextRef.current;
+
+    // Re-init navigation
+    swiper.navigation.destroy();
+    swiper.navigation.init();
+    swiper.navigation.update();
+  };
 
   return (
-    <div className={classes.swiperContainer}>
+    <>
       <Swiper
         style={{ marginTop: 80 + 45 }}
         navigation={{
@@ -41,60 +53,40 @@ const Carousel = () => {
           nextEl: navigationNextRef.current,
         }}
         loop
-        slidesPerView={1}
         centeredSlides
-        loopAdditionalSlides={3}
-        spaceBetween={-500}
-        onSwiper={(swiper) => {
-          // Delay execution for the refs to be defined
-          setTimeout(() => {
-            // Override prevEl & nextEl now that refs are defined
-            swiper.params.navigation.prevEl = navigationPrevRef.current;
-            swiper.params.navigation.nextEl = navigationNextRef.current;
-
-            // Re-init navigation
-            swiper.navigation.destroy();
-            swiper.navigation.init();
-            swiper.navigation.update();
-          });
-        }}
-        // breakpoints={{
-        //   600: { spaceBetween: -100 },
-        //   768: { spaceBetween: -130 },
-        //   980: { spaceBetween: -160 },
-        //   1200: { spaceBetween: -200 },
-        //   1400: { spaceBetween: -250 },
-        // }}
+        loopAdditionalSlides={1}
+        spaceBetween={"-18%"}
+        onSwiper={onSwiperHandler}
       >
         {movies.map((movie) => (
           <SwiperSlide className={classes.slide} key={movie.name}>
             <div
-              className={classes.image}
+              className={classes.wrapper}
               style={{ backgroundImage: `url("${movie.image}")` }}
             >
               <div className={classes.movieInfo}>
                 <Typography variant="h4" gutterBottom>
                   {movie.name}
                 </Typography>
-                <Typography variant="caption" display="block" noWrap paragraph>
-                  {movie.description}
-                </Typography>
+                <div className={classes.description}>
+                  <Typography variant="caption">{movie.description}</Typography>
+                </div>
               </div>
             </div>
           </SwiperSlide>
         ))}
         <div className={classes.navButtons}>
           <ButtonGroup>
-            <IconButton>
-              <BeforeIcon ref={navigationPrevRef} />
+            <IconButton ref={navigationPrevRef}>
+              <BeforeIcon />
             </IconButton>
-            <IconButton>
-              <NextIcon ref={navigationNextRef} />
+            <IconButton ref={navigationNextRef}>
+              <NextIcon />
             </IconButton>
           </ButtonGroup>
         </div>
       </Swiper>
-    </div>
+    </>
   );
 };
 

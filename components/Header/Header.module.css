@@ -24,9 +24,18 @@
   color: rgba(255, 255, 255, 0.35);
 }
 
-.searchIcon {
+.icon {
   width: 44px !important;
   height: 44px !important;
   border-radius: 6px !important;
   background-color: #292a2c !important;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1024px) {
+}
+
+@media screen and (min-width: 1280px) {
 }

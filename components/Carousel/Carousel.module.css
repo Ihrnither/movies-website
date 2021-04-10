@@ -1,17 +1,41 @@
-.swiperContainer {
-  position: relative;
-}
-
 .slide {
   display: flex;
   justify-content: center;
 }
 
-.image {
-  position: relative;
-  width: 1000px;
+.wrapper {
+  width: 80%;
   height: 385px;
   background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+
+.movieInfo {
+  text-align: center;
+  width: 250px;
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1, 1);
+}
+
+.movieInfo:hover {
+  transform: scale(1.1, 1.1);
+}
+
+.movieInfo h4 {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.description {
+  line-height: 0.9rem;
+  height: 2.5rem;
+  overflow: hidden;
 }
 
 .navButtons {
@@ -19,17 +43,18 @@
   z-index: 1;
   bottom: 0;
   right: 0;
+  margin-bottom: 12px;
 }
 
-.movieInfo {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  width: 300px;
-  height: 100px;
-}
+@media screen and (min-width: 960px) {
+  .wrapper {
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
 
-.movieInfo h4 {
-  font-size: 30px;
-  font-weight: bold;
+  .movieInfo {
+    text-align: left;
+    width: 300px;
+    margin: 0 30px 30px 0;
+  }
 }

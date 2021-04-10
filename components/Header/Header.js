@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Link from "../Link";
 import {
   AppBar,
@@ -5,15 +6,19 @@ import {
   IconButton,
   Toolbar,
   Typography,
+  Hidden,
+  Backdrop,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+import MenuIcon from "@material-ui/icons/Menu";
+import CloseIcon from "@material-ui/icons/Close";
 
 import classes from "./Header.module.css";
 
 const links = [
   { href: "/", label: "Home" },
   { href: "/movies", label: "Movies" },
-  { href: "/shows", label: "TV Shows" },
+  { href: "/series", label: "Series" },
   { href: "/recent", label: "Recently Added" },
 ];
 
@@ -25,22 +30,56 @@ const Links = () =>
   ));
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+  const handler = () => {
+    setOpen((prevState) => !prevState);
+  };
   return (
-    <AppBar>
-      <div className={classes.header}>
-        <Toolbar>
-          <div className={classes.logo}>
-            <Typography variant="h4">M</Typography>
-          </div>
-          <Grid container justify="center">
+    <>
+      <Backdrop
+        open={open}
+        style={{ zIndex: 9999, background: "rgba(0, 0, 0, 0.90)" }}
+      >
+        <Grid container direction="column" alignItems="center" spacing={10}>
+          <Grid item>
+            <IconButton className={classes.icon} onClick={handler}>
+              <CloseIcon style={{ cursor: "pointer" }} />
+            </IconButton>
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            alignItems="center"
+            justify="space-between"
+            style={{ height: 150 }}
+          >
             <Links />
           </Grid>
-          <IconButton className={classes.searchIcon}>
-            <SearchIcon />
-          </IconButton>
+        </Grid>
+      </Backdrop>
+      <AppBar>
+        <Toolbar className={classes.header}>
+          <Grid container alignItems="center" justify="space-between">
+            <div className={classes.logo}>
+              <Typography variant="h4">M</Typography>
+            </div>
+            <Hidden xsDown>
+              <Grid item>
+                <Links />
+              </Grid>
+              <IconButton className={classes.icon}>
+                <SearchIcon />
+              </IconButton>
+            </Hidden>
+            <Hidden smUp>
+              <IconButton className={classes.icon} onClick={handler}>
+                <MenuIcon />
+              </IconButton>
+            </Hidden>
+          </Grid>
         </Toolbar>
-      </div>
-    </AppBar>
+      </AppBar>
+    </>
   );
 };
 
