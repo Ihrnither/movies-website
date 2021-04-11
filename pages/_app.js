@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import CustomScrollbar from "../components/CustomScrollbar";
@@ -17,7 +17,7 @@ const theme = createMuiTheme({
 });
 
 function MyApp({ Component, pageProps }) {
-  React.useEffect(() => {
+  useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector("#jss-server-side");
     if (jssStyles) {

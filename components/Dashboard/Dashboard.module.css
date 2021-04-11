@@ -1,0 +1,33 @@
+.infoContainer {
+  margin-top: 35px;
+}
+
+.info {
+  padding: 25px;
+}
+
+.image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.cast {
+  margin-top: 48px;
+}
+
+.castItem {
+  margin: 16px 0;
+}
+
+.avatar {
+  width: 80px !important;
+  height: 80px !important;
+  border: 8px solid #373737;
+  box-shadow: 3px 3px 6px black, -3px -3px 6px black;
+}
+
+@media screen and (min-width: 600px) {
+  .movieInfo {
+    margin-top: 40px !important;
+  }
+}

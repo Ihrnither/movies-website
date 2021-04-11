@@ -11,7 +11,7 @@ const CustomScrollbar = (props) => {
       renderThumbVertical={({ style, ...props }) => (
         <div
           {...props}
-          style={{ ...style, backgroundColor: "#FAE807", zIndex: 999999999999 }}
+          style={{ ...style, backgroundColor: "#FAE807", zIndex: 9998 }}
         />
       )}
     >
