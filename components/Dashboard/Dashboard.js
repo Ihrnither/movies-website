@@ -27,7 +27,7 @@ const Dashboard = ({ data, crew, cast }) => {
 
   return (
     <Layout>
-      <Grid container spacing={4} justify={matchesLg && "space-around"}>
+      <Grid container justify={matchesLg && "space-around"}>
         <Grid item xs={12} sm={5} lg={3}>
           <img
             src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
@@ -36,28 +36,35 @@ const Dashboard = ({ data, crew, cast }) => {
           />
         </Grid>
         <Grid item xs={12} sm={7} className={classes.movieInfo}>
-          <Grid
-            container
-            alignItems="center"
-            spacing={2}
-            justify={!matchesSm && "center"}
-          >
-            <Grid item>
-              <Typography variant="h4" gutterBottom>
-                {data.original_title}
-              </Typography>
+          <Box>
+            <Grid
+              container
+              alignItems="center"
+              justify={!matchesSm && "center"}
+            >
+              <Grid item>
+                <Typography variant="h4" gutterBottom>
+                  {data.original_title}
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Box margin=" 0 16px">
+                  <Typography variant="h5" gutterBottom>
+                    ({date})
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item>
+                <Typography
+                  color="textSecondary"
+                  paragraph
+                  align={matchesSm ? "left" : "center"}
+                >
+                  {data.overview}
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Typography variant="h5" gutterBottom>
-                ({date})
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography color="textSecondary" paragraph>
-                {data.overview}
-              </Typography>
-            </Grid>
-          </Grid>
+          </Box>
 
           <Grid
             container

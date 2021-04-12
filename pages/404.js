@@ -11,7 +11,6 @@ const Custom404 = () => {
         spacing={4}
         style={{
           marginTop: "auto",
-          border: "1px solid green",
           height: "100vh",
         }}
       >

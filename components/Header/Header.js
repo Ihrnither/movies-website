@@ -36,14 +36,11 @@ const Header = () => {
   };
   return (
     <>
-      <Backdrop
-        open={open}
-        style={{ zIndex: 9999, background: "rgba(0, 0, 0, 0.90)" }}
-      >
+      <Backdrop open={open} className={classes.backdrop}>
         <Grid container direction="column" alignItems="center" spacing={10}>
           <Grid item>
             <IconButton className={classes.icon} onClick={handler}>
-              <CloseIcon style={{ cursor: "pointer" }} />
+              <CloseIcon />
             </IconButton>
           </Grid>
           <Grid
@@ -51,7 +48,7 @@ const Header = () => {
             direction="column"
             alignItems="center"
             justify="space-between"
-            style={{ height: 150 }}
+            className={classes.linksContainer}
           >
             <Links />
           </Grid>

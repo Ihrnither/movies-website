@@ -1,4 +1,4 @@
-import { Avatar, Grid, Typography } from "@material-ui/core";
+import { Avatar, Box, Grid, Typography } from "@material-ui/core";
 import classes from "./Dashboard.module.css";
 
 const CastItem = ({ image, name, character, director }) => (
@@ -10,7 +10,7 @@ const CastItem = ({ image, name, character, director }) => (
       className={classes.castItem}
     >
       <Grid item>
-        <Grid container alignItems="center" spacing={1}>
+        <Grid container alignItems="center">
           <Grid item>
             <Avatar
               className={classes.avatar}
@@ -24,12 +24,16 @@ const CastItem = ({ image, name, character, director }) => (
         </Grid>
       </Grid>
       <Grid item>
-        <Grid container spacing={1}>
+        <Grid container>
           <Grid item>
-            <Typography color="textSecondary">as...</Typography>
+            <Box marginLeft="12px">
+              <Typography color="textSecondary">as...</Typography>
+            </Box>
           </Grid>
           <Grid item>
-            <Typography>{director ? "Director" : character}</Typography>
+            <Typography className={classes.castChar}>
+              {director ? "Director" : character}
+            </Typography>
           </Grid>
         </Grid>
       </Grid>

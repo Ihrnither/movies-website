@@ -2,6 +2,11 @@
   margin-top: 35px;
 }
 
+.movieInfo {
+  margin-top: 40px !important;
+  padding: 0 16px !important;
+}
+
 .info {
   padding: 25px;
 }
@@ -24,10 +29,9 @@
   height: 80px !important;
   border: 8px solid #373737;
   box-shadow: 3px 3px 6px black, -3px -3px 6px black;
+  margin: 0 12px;
 }
 
-@media screen and (min-width: 600px) {
-  .movieInfo {
-    margin-top: 40px !important;
-  }
+.castChar {
+  margin: 0 12px !important;
 }

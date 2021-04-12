@@ -1,12 +1,12 @@
 import Header from "./Header/Header";
 
-const Layout = (props) => {
+const Layout = ({ children }) => {
   return (
     <>
       <header>
         <Header />
       </header>
-      <main style={{ marginTop: 80 }}>{props.children}</main>
+      <main style={{ marginTop: 80 }}>{children}</main>
       <footer></footer>
     </>
   );
