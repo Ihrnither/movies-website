@@ -8,21 +8,19 @@ const Custom404 = () => {
         container
         justify="center"
         alignItems="center"
-        spacing={4}
         style={{
-          marginTop: "auto",
-          height: "100vh",
+          height: "89vh",
         }}
       >
         <Grid item>
-          <Typography variant="h5">Error</Typography>
+          <Typography>Error</Typography>
         </Grid>
         <Divider
           orientation="vertical"
-          style={{ background: "grey", height: 50 }}
+          style={{ background: "grey", height: 50, margin: 12 }}
         />
         <Grid item>
-          <Typography variant="h5">This page could not be found.</Typography>
+          <Typography>This page could not be found.</Typography>
         </Grid>
       </Grid>
     </Layout>

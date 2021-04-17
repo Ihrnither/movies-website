@@ -1,39 +1,22 @@
-import { Avatar, Box, Grid, Typography } from "@material-ui/core";
+import { Avatar, Grid, Typography } from "@material-ui/core";
 import classes from "./Dashboard.module.css";
 
 const CastItem = ({ image, name, character, director }) => (
-  <Grid item>
-    <Grid
-      container
-      alignItems="center"
-      justify="space-between"
-      className={classes.castItem}
-    >
+  <Grid item xs={6} md={4} className={classes.castItem}>
+    <Grid container alignItems="center" direction="column">
+      <Avatar
+        className={classes.avatar}
+        alt={name}
+        src={`https://image.tmdb.org/t/p/original/${image}`}
+      />
+      <Typography color="textSecondary">{name}</Typography>
       <Grid item>
-        <Grid container alignItems="center">
+        <Grid container spacing={1}>
           <Grid item>
-            <Avatar
-              className={classes.avatar}
-              alt={name}
-              src={`https://image.tmdb.org/t/p/original/${image}`}
-            />
+            <Typography color="textSecondary">as...</Typography>
           </Grid>
           <Grid item>
-            <Typography color="textSecondary">{name}</Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-      <Grid item>
-        <Grid container>
-          <Grid item>
-            <Box marginLeft="12px">
-              <Typography color="textSecondary">as...</Typography>
-            </Box>
-          </Grid>
-          <Grid item>
-            <Typography className={classes.castChar}>
-              {director ? "Director" : character}
-            </Typography>
+            <Typography gutterBottom>{character}</Typography>
           </Grid>
         </Grid>
       </Grid>

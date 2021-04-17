@@ -3,20 +3,20 @@ import Info from "./Info";
 import CastItem from "./CastItem";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
-import { Grid, Typography, Divider, Hidden, Box } from "@material-ui/core";
+import { Grid, Typography, Divider, Box, Avatar } from "@material-ui/core";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 import classes from "./Dashboard.module.css";
 import "react-circular-progressbar/dist/styles.css";
 
-const Dashboard = ({ data, crew, cast }) => {
+const Dashboard = ({ data, crew, cast, tv }) => {
   const theme = useTheme();
   const matchesSm = useMediaQuery(theme.breakpoints.up("sm"));
   const matchesMd = useMediaQuery(theme.breakpoints.up("md"));
   const matchesLg = useMediaQuery(theme.breakpoints.up("lg"));
   const director = crew.find((c) => c.job === "Director");
-  const topCast = [...cast].splice(0, 5);
-  const date = data.release_date.split("-")[0];
+  const topCast = [...cast].splice(0, tv ? 6 : 5);
+  const date = tv ? data.first_air_date : data.release_date.split("-")[0];
   const genres = data.genres.map((genre, index) => {
     if (index === data.genres.length - 1) {
       return genre.name;
@@ -44,7 +44,7 @@ const Dashboard = ({ data, crew, cast }) => {
             >
               <Grid item>
                 <Typography variant="h4" gutterBottom>
-                  {data.original_title}
+                  {data.original_title || data.name}
                 </Typography>
               </Grid>
               <Grid item>
@@ -85,8 +85,13 @@ const Dashboard = ({ data, crew, cast }) => {
             </Grid>
             <Grid item xs={12} md={4} className={classes.info}>
               <Info label="Rating" value={data.vote_average} />
-              <Info label="Metascore" value={5} />
-              <Info label="Users" value={5} />
+
+              <Info label="Raters" value={data.vote_count} />
+              {tv ? (
+                <Info label="Seasons" value={data.number_of_seasons} />
+              ) : (
+                <Info label="Popularity" value={data.popularity} />
+              )}
             </Grid>
 
             <Divider flexItem orientation="vertical" />
@@ -94,50 +99,34 @@ const Dashboard = ({ data, crew, cast }) => {
             <Grid item xs={12} md={5} className={classes.info}>
               <Info label="Genre" value={genres} />
               <Info label="Release Date" value={data.release_date} />
-              <Info label="Duration" value={`${data.runtime} Min`} />
+              <Info
+                label={tv ? "Eposide Duration" : "Duration"}
+                value={`${tv ? data.episode_run_time : data.runtime} Min`}
+              />
             </Grid>
           </Grid>
-          <Hidden only="sm">
-            <Grid
-              container
-              justify={matchesLg && "center"}
-              className={classes.cast}
-            >
-              <Grid item xs lg={8}>
-                <CastItem
-                  name={director.name}
-                  image={director.profile_path}
-                  director
-                />
-                {topCast.map((c) => (
-                  <CastItem
-                    key={c.id}
-                    name={c.original_name}
-                    image={c.profile_path}
-                    character={c.character}
-                  />
-                ))}
-              </Grid>
-            </Grid>
-          </Hidden>
-        </Grid>
-        <Hidden only={["xs", "md", "lg"]}>
-          <Grid container alignItems={"center"} direction="column">
-            <CastItem
-              name={director.name}
-              image={director.profile_path}
-              director
-            />
+
+          {/* cast */}
+
+          <Grid container className={classes.cast}>
+            {!tv && (
+              <CastItem
+                name={director.original_name}
+                image={director.profile_path}
+                character="Director"
+              />
+            )}
             {topCast.map((c) => (
               <CastItem
-                key={c.id}
-                name={c.original_name}
                 image={c.profile_path}
+                name={c.original_name}
                 character={c.character}
               />
             ))}
           </Grid>
-        </Hidden>
+
+          {/* cast */}
+        </Grid>
       </Grid>
     </Layout>
   );

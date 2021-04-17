@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Head from "next/head";
 
 import CustomScrollbar from "../components/CustomScrollbar";
 import "../styles/globals.css";
@@ -26,11 +27,16 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <CustomScrollbar>
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CustomScrollbar>
+    <>
+      <Head>
+        <title>M-Box</title>
+      </Head>
+      <CustomScrollbar>
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CustomScrollbar>
+    </>
   );
 }
 

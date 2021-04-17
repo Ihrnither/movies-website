@@ -10,7 +10,7 @@ import classes from "./Carousel.module.css";
 
 SwiperCore.use([Navigation]);
 
-const Carousel = ({ data }) => {
+const Carousel = ({ data, tv }) => {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
 
@@ -39,7 +39,7 @@ const Carousel = ({ data }) => {
         loop
         centeredSlides
         loopAdditionalSlides={1}
-        spaceBetween={"-18%"}
+        spaceBetween={"-28%"}
         onSwiper={onSwiperHandler}
       >
         {data.map((movie) => (
@@ -55,10 +55,10 @@ const Carousel = ({ data }) => {
                   variant="h4"
                   gutterBottom
                   onClick={() => {
-                    router.push(`/movies/${movie.id}`);
+                    router.push(`/${tv ? "series" : "movies"}/${movie.id}`);
                   }}
                 >
-                  {movie.original_title}
+                  {movie.original_title || movie.original_name}
                 </Typography>
                 <div className={classes.description}>
                   <Typography variant="caption">{movie.overview}</Typography>
