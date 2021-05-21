@@ -38,15 +38,7 @@ const Dashboard = ({ data, crew, cast, tv }) => {
       <Grid container justify={matchesLg && "space-around"}>
         <Grid item xs={12} sm={5} lg={3}>
           {!loaded && (
-            <div
-              style={{
-                width: "100%",
-                height: "100vh",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <div className={classes.spinnerContainer}>
               <CircularProgress />
             </div>
           )}
@@ -144,6 +136,7 @@ const Dashboard = ({ data, crew, cast, tv }) => {
                 image={c.profile_path}
                 name={c.original_name}
                 character={c.character}
+                key={c.id}
               />
             ))}
           </Grid>
