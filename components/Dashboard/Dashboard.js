@@ -3,7 +3,6 @@ import Info from "./Info";
 import CastItem from "./CastItem";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
-import Skeleton from "@material-ui/lab/Skeleton";
 import {
   Grid,
   Typography,

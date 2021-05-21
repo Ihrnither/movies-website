@@ -31,20 +31,32 @@ const Links = () =>
 
 const Header = () => {
   const [open, setOpen] = useState(false);
-  const handler = () => {
-    setOpen((prevState) => !prevState);
+  const [search, setSearch] = useState(false);
+
+  const searchButtonHandler = () => {
+    setOpen(false);
+    setSearch(true);
   };
+
   return (
     <>
+      <Backdrop
+        open={search}
+        className={classes.backdrop}
+        onClick={() => setSearch(false)}
+      >
+        <Typography>HELLO</Typography>
+      </Backdrop>
+
       <Backdrop open={open} className={classes.backdrop}>
         <Grid container direction="column" alignItems="center" spacing={4}>
           <Grid item>
-            <IconButton className={classes.icon} onClick={handler}>
+            <IconButton className={classes.icon} onClick={() => setOpen(false)}>
               <CloseIcon />
             </IconButton>
           </Grid>
           <Grid item>
-            <IconButton className={classes.icon}>
+            <IconButton className={classes.icon} onClick={searchButtonHandler}>
               <SearchIcon />
             </IconButton>
           </Grid>
@@ -69,12 +81,18 @@ const Header = () => {
               <Grid item>
                 <Links />
               </Grid>
-              <IconButton className={classes.icon}>
+              <IconButton
+                className={classes.icon}
+                onClick={searchButtonHandler}
+              >
                 <SearchIcon />
               </IconButton>
             </Hidden>
             <Hidden smUp>
-              <IconButton className={classes.icon} onClick={handler}>
+              <IconButton
+                className={classes.icon}
+                onClick={() => setOpen(true)}
+              >
                 <MenuIcon />
               </IconButton>
             </Hidden>

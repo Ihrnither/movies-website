@@ -16,7 +16,13 @@ const Movie = ({ data, credits }) => {
 export default Movie;
 
 export const getServerSideProps = async ({ params }) => {
-  const response = await axios.get(`movie/${params.movieId}`);
+  let response;
+  let creditsResponse;
+  try {
+    response = await axios.get(`movie/${params.movieId}`);
+  } catch (err) {
+    console.log(err);
+  }
 
   if (response.status !== 200) {
     return {
@@ -24,7 +30,12 @@ export const getServerSideProps = async ({ params }) => {
     };
   }
 
-  const creditsResponse = await axios.get(`/movie/${response.data.id}/credits`);
+  try {
+    creditsResponse = await axios.get(`/movie/${response.data.id}/credits`);
+  } catch (err) {
+    console.log(err);
+  }
+
   return {
     props: {
       data: response.data,

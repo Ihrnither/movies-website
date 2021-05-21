@@ -3,6 +3,7 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Head from "next/head";
 
 import CustomScrollbar from "../components/CustomScrollbar";
+import NextNprogress from "nextjs-progressbar";
 import "../styles/globals.css";
 
 const theme = createMuiTheme({
@@ -36,6 +37,7 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </ThemeProvider>
       </CustomScrollbar>
+      <NextNprogress color={theme.palette.primary.main} />
     </>
   );
 }
