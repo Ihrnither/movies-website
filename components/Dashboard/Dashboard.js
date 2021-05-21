@@ -3,13 +3,22 @@ import Info from "./Info";
 import CastItem from "./CastItem";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
-import { Grid, Typography, Divider, Box, Avatar } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
+import {
+  Grid,
+  Typography,
+  Divider,
+  Box,
+  CircularProgress,
+} from "@material-ui/core";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 import classes from "./Dashboard.module.css";
 import "react-circular-progressbar/dist/styles.css";
+import { useState } from "react";
 
 const Dashboard = ({ data, crew, cast, tv }) => {
+  const [loaded, setLoaded] = useState(false);
   const theme = useTheme();
   const matchesSm = useMediaQuery(theme.breakpoints.up("sm"));
   const matchesMd = useMediaQuery(theme.breakpoints.up("md"));
@@ -29,10 +38,25 @@ const Dashboard = ({ data, crew, cast, tv }) => {
     <Layout>
       <Grid container justify={matchesLg && "space-around"}>
         <Grid item xs={12} sm={5} lg={3}>
+          {!loaded && (
+            <div
+              style={{
+                width: "100%",
+                height: "100vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <CircularProgress />
+            </div>
+          )}
           <img
             src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
             alt={data.original_title}
             className={classes.image}
+            onLoad={() => setLoaded(true)}
+            style={{ display: () => (loaded ? "block" : "none") }}
           />
         </Grid>
         <Grid item xs={12} sm={7} className={classes.movieInfo}>

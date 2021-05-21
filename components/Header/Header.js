@@ -37,10 +37,15 @@ const Header = () => {
   return (
     <>
       <Backdrop open={open} className={classes.backdrop}>
-        <Grid container direction="column" alignItems="center" spacing={10}>
+        <Grid container direction="column" alignItems="center" spacing={4}>
           <Grid item>
             <IconButton className={classes.icon} onClick={handler}>
               <CloseIcon />
+            </IconButton>
+          </Grid>
+          <Grid item>
+            <IconButton className={classes.icon}>
+              <SearchIcon />
             </IconButton>
           </Grid>
           <Grid
