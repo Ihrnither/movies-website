@@ -38,7 +38,6 @@ const genres = [
 ];
 
 const Popular = ({ data, tv }) => {
-  console.log(data[0].genre_ids.includes(18));
   const [genre, setGenre] = useState("");
 
   const handleChange = (event) => {

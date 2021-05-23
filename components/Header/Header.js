@@ -13,6 +13,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import MenuIcon from "@material-ui/icons/Menu";
 import CloseIcon from "@material-ui/icons/Close";
 
+import Search from "./Search";
 import classes from "./Header.module.css";
 
 const links = [
@@ -43,9 +44,9 @@ const Header = () => {
       <Backdrop
         open={search}
         className={classes.backdrop}
-        onClick={() => setSearch(false)}
+        // onClick={() => setSearch(false)}
       >
-        <Typography>HELLO</Typography>
+        <Search onClick={() => setSearch(false)} />
       </Backdrop>
 
       <Backdrop open={open} className={classes.backdrop}>

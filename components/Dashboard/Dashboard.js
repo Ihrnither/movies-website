@@ -34,10 +34,6 @@ const Dashboard = ({ data, crew, cast, tv }) => {
   });
 
   useEffect(() => {
-    console.log(loading);
-  }, [loading]);
-
-  useEffect(() => {
     setTimeout(() => setLoading(false), 1250);
   }, []);
 

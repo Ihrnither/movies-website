@@ -39,3 +39,21 @@
   z-index: 9999 !important;
   background: rgba(0, 0, 0, 0.9) !important;
 }
+
+.searchContainer {
+  height: 100vh;
+  margin-top: 24px;
+}
+
+.searchField {
+  width: 100%;
+}
+
+.resultsContainer {
+  margin-top: 24px;
+}
+
+.resultImage {
+  border-radius: 8px;
+  cursor: pointer;
+}
