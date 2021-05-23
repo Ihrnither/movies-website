@@ -1,7 +1,7 @@
 import { Avatar, Grid, Typography } from "@material-ui/core";
 import classes from "./Dashboard.module.css";
 
-const CastItem = ({ image, name, character, director }) => (
+const CastItem = ({ image, name, character }) => (
   <Grid item xs={6} md={4} className={classes.castItem}>
     <Grid container alignItems="center" direction="column">
       <Avatar

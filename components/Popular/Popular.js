@@ -37,7 +37,7 @@ const genres = [
   { id: 37, name: "Western" },
 ];
 
-const Popular = ({ data }) => {
+const Popular = ({ data, tv }) => {
   console.log(data[0].genre_ids.includes(18));
   const [genre, setGenre] = useState("");
 
@@ -117,6 +117,7 @@ const Popular = ({ data }) => {
                               image={item.backdrop_path}
                               id={item.id}
                               key={item.id}
+                              tv={tv}
                             />
                           );
                         }
@@ -132,6 +133,7 @@ const Popular = ({ data }) => {
                             image={item.backdrop_path}
                             id={item.id}
                             key={item.id}
+                            tv={tv}
                           />
                         ))}
                 </Grid>

@@ -9,7 +9,7 @@ const Series = ({ data, popular }) => {
   return (
     <Layout>
       <Carousel data={data.results} tv />
-      <Popular data={popular.results} />
+      <Popular data={popular.results} tv />
     </Layout>
   );
 };

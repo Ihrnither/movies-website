@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import classes from "./Popular.module.css";
 
-const Item = ({ title, releaseDate, image, id }) => {
+const Item = ({ title, releaseDate, image, id, tv }) => {
   const [show, setShow] = useState(false);
   return (
     <>
@@ -35,7 +35,7 @@ const Item = ({ title, releaseDate, image, id }) => {
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Link href={`/movies/${id}`}>
+                  <Link href={`/${tv ? `series/${id}` : `movies/${id}`}`}>
                     <a className={classes.navlink}>
                       <Typography variant="body2">See More</Typography>
                     </a>

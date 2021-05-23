@@ -14,10 +14,10 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 import classes from "./Dashboard.module.css";
 import "react-circular-progressbar/dist/styles.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Dashboard = ({ data, crew, cast, tv }) => {
-  const [loaded, setLoaded] = useState(false);
+  const [loading, setLoading] = useState(true);
   const theme = useTheme();
   const matchesSm = useMediaQuery(theme.breakpoints.up("sm"));
   const matchesMd = useMediaQuery(theme.breakpoints.up("md"));
@@ -33,11 +33,19 @@ const Dashboard = ({ data, crew, cast, tv }) => {
     }
   });
 
+  useEffect(() => {
+    console.log(loading);
+  }, [loading]);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1250);
+  }, []);
+
   return (
     <Layout>
       <Grid container justify={matchesLg && "space-around"}>
         <Grid item xs={12} sm={5} lg={3}>
-          {!loaded && (
+          {loading && (
             <div className={classes.spinnerContainer}>
               <CircularProgress />
             </div>
@@ -46,8 +54,7 @@ const Dashboard = ({ data, crew, cast, tv }) => {
             src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
             alt={data.original_title}
             className={classes.image}
-            onLoad={() => setLoaded(true)}
-            style={{ display: () => (loaded ? "block" : "none") }}
+            onLoad={() => setLoading(false)}
           />
         </Grid>
         <Grid item xs={12} sm={7} className={classes.movieInfo}>
