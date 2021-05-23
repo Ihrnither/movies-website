@@ -10,6 +10,7 @@ import Image from "next/image";
 import CloseIcon from "@material-ui/icons/Close";
 import axios from "../../axios";
 import { useRouter } from "next/router";
+import Scrollbar from "../CustomScrollbar";
 
 import classes from "./Header.module.css";
 
@@ -88,29 +89,33 @@ const Search = ({ onClick }) => {
           alignItems="center"
           className={classes.resultsContainer}
         >
-          {results.map((result, index) => {
-            if (index < 8) {
-              return (
-                <>
-                  {result.poster_path && (
-                    <Grid item xs={6} sm={4} md={3}>
-                      <Image
-                        src={`https://image.tmdb.org/t/p/w300${result.poster_path}`}
-                        alt={result.id}
-                        key={result.id}
-                        width={300}
-                        height={300}
-                        className={classes.resultImage}
-                        onClick={() =>
-                          imageClickHandler(result.id, result.media_type)
-                        }
-                      />
-                    </Grid>
-                  )}
-                </>
-              );
-            }
-          })}
+          <Scrollbar>
+            <Grid container>
+              {results.map((result, index) => {
+                if (index < 8) {
+                  return (
+                    <>
+                      {result.poster_path && (
+                        <Grid item xs={6} sm={4} md={3}>
+                          <Image
+                            src={`https://image.tmdb.org/t/p/w300${result.poster_path}`}
+                            alt={result.id}
+                            key={result.id}
+                            width={300}
+                            height={400}
+                            className={classes.resultImage}
+                            onClick={() =>
+                              imageClickHandler(result.id, result.media_type)
+                            }
+                          />
+                        </Grid>
+                      )}
+                    </>
+                  );
+                }
+              })}
+            </Grid>
+          </Scrollbar>
         </Grid>
       )}
     </Container>

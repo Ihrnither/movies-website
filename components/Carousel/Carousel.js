@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import SwiperCore, { Navigation } from "swiper";
+import SwiperCore, { Navigation, Autoplay } from "swiper";
 import { SwiperSlide, Swiper } from "swiper/react";
 import { ButtonGroup, IconButton, Typography } from "@material-ui/core";
 import NextIcon from "@material-ui/icons/NavigateNext";
@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 import classes from "./Carousel.module.css";
 
-SwiperCore.use([Navigation]);
+SwiperCore.use([Navigation, Autoplay]);
 
 const Carousel = ({ data, tv }) => {
   const navigationPrevRef = useRef(null);
@@ -41,6 +41,7 @@ const Carousel = ({ data, tv }) => {
         loopAdditionalSlides={1}
         spaceBetween={"-28%"}
         onSwiper={onSwiperHandler}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
       >
         {data.map((movie) => (
           <SwiperSlide className={classes.slide} key={movie.id}>
