@@ -47,7 +47,7 @@ const Dashboard = ({ data, crew, cast, tv }) => {
             </div>
           )}
           <img
-            src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
             alt={data.original_title}
             className={classes.image}
             onLoad={() => setLoading(false)}

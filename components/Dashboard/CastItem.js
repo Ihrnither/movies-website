@@ -7,7 +7,7 @@ const CastItem = ({ image, name, character }) => (
       <Avatar
         className={classes.avatar}
         alt={name}
-        src={`https://image.tmdb.org/t/p/original/${image}`}
+        src={`https://image.tmdb.org/t/p/w185/${image}`}
       />
       <Typography color="textSecondary">{name}</Typography>
       <Grid item>

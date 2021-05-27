@@ -9,9 +9,10 @@ import {
   IconButton,
   Typography,
 } from "@material-ui/core";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import FormatAlignLeftIcon from "@material-ui/icons/FormatAlignLeft";
-import { useState } from "react";
 import Item from "./Item";
 import classes from "./Popular.module.css";
 
@@ -39,9 +40,14 @@ const genres = [
 
 const Popular = ({ data, tv }) => {
   const [genre, setGenre] = useState("");
+  const router = useRouter();
 
   const handleChange = (event) => {
     setGenre(event.target.value);
+  };
+
+  const handleSeeMore = () => {
+    router.push(`${router.pathname}/popular/1`);
   };
   return (
     <>
@@ -97,7 +103,11 @@ const Popular = ({ data, tv }) => {
                   </Grid>
                   <Grid item xs></Grid>
                   <Grid item>
-                    <Typography variant="body2">{`SEE ALL >`}</Typography>
+                    <Typography
+                      variant="body2"
+                      onClick={handleSeeMore}
+                      className="pointer"
+                    >{`SEE ALL >`}</Typography>
                   </Grid>
                 </Grid>
               </Grid>

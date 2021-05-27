@@ -41,11 +41,7 @@ const Header = () => {
 
   return (
     <>
-      <Backdrop
-        open={search}
-        className={classes.backdrop}
-        // onClick={() => setSearch(false)}
-      >
+      <Backdrop open={search} className={classes.backdrop}>
         <Search onClick={() => setSearch(false)} />
       </Backdrop>
 

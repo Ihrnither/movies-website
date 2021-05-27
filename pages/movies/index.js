@@ -1,7 +1,7 @@
 import axios from "../../axios";
 import Carousel from "../../components/Carousel";
 import Layout from "../../components/Layout";
-import Popular from "../../components/Popular";
+import PopularSection from "../../components/PopularSection";
 
 import "swiper/swiper-bundle.min.css";
 
@@ -9,7 +9,7 @@ const Movies = ({ data, popular }) => {
   return (
     <Layout>
       <Carousel data={data.results} />
-      <Popular data={popular.results} />
+      <PopularSection data={popular.results} />
     </Layout>
   );
 };

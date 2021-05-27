@@ -48,7 +48,9 @@ const Carousel = ({ data, tv }) => {
             <div
               className={classes.wrapper}
               style={{
-                backgroundImage: `url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")`,
+                backgroundImage: `url("https://image.tmdb.org/t/p/w1280${
+                  movie.backdrop_path || movie.poster_path
+                }")`,
               }}
             >
               <div className={classes.movieInfo}>
