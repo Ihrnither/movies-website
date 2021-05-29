@@ -16,7 +16,7 @@ export default Popular;
 export const getServerSideProps = async (ctx) => {
   let response;
   try {
-    response = await axios.get(`/movie/popular?page=${ctx.params.pageNumber}`);
+    response = await axios.get(`/tv/popular?page=${ctx.params.pageNumber}`);
   } catch (err) {
     console.log(err);
   }
