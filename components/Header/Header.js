@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import Link from "../Link";
 import {
   AppBar,
@@ -20,7 +21,6 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/movies", label: "Movies" },
   { href: "/series", label: "Series" },
-  { href: "/recent", label: "Recently Added" },
 ];
 
 const Links = () =>
@@ -30,13 +30,18 @@ const Links = () =>
     </Link>
   ));
 
-const Header = () => {
+const Header = ({ staticHeader, transparent }) => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState(false);
 
   const searchButtonHandler = () => {
     setOpen(false);
     setSearch(true);
+  };
+
+  const logoClickHandler = () => {
+    router.push("/");
   };
 
   return (
@@ -68,11 +73,25 @@ const Header = () => {
           </Grid>
         </Grid>
       </Backdrop>
-      <AppBar>
-        <Toolbar className={classes.header}>
+      <AppBar
+        position={`${staticHeader ? "relative" : "fixed"}`}
+        style={{
+          backgroundColor: `${transparent && "transparent"}`,
+          boxShadow: `${transparent && "none"}`,
+        }}
+      >
+        <Toolbar
+          className={classes.header}
+          style={{
+            backgroundColor: `${transparent && "transparent"}`,
+            boxShadow: `${transparent && "none"}`,
+          }}
+        >
           <Grid container alignItems="center" justify="space-between">
             <div className={classes.logo}>
-              <Typography variant="h4">M</Typography>
+              <Typography variant="h4" onClick={logoClickHandler}>
+                M
+              </Typography>
             </div>
             <Hidden xsDown>
               <Grid item>

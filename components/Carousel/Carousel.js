@@ -54,13 +54,7 @@ const Carousel = ({ data, tv }) => {
               }}
             >
               <div className={classes.movieInfo}>
-                <Typography
-                  variant="h4"
-                  gutterBottom
-                  onClick={() => {
-                    router.push(`/${tv ? "series" : "movies"}/${movie.id}`);
-                  }}
-                >
+                <Typography variant="h4" gutterBottom>
                   {movie.original_title || movie.original_name}
                 </Typography>
                 <div className={classes.description}>

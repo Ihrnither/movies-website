@@ -121,9 +121,11 @@ const Popular = ({ data, tv }) => {
                             <Item
                               title={item.original_title || item.original_name}
                               releaseDate={
-                                item.release_date || item.first_air_date
+                                item.release_date ||
+                                item.first_air_date ||
+                                "Unknown"
                               }
-                              image={item.backdrop_path}
+                              image={item.backdrop_path || item.poster_path}
                               id={item.id}
                               key={item.id}
                               tv={tv}
@@ -137,9 +139,11 @@ const Popular = ({ data, tv }) => {
                           <Item
                             title={item.original_title || item.original_name}
                             releaseDate={
-                              item.release_date || item.first_air_date
+                              item.release_date ||
+                              item.first_air_date ||
+                              "Unknown"
                             }
-                            image={item.backdrop_path}
+                            image={item.backdrop_path || item.poster_path}
                             id={item.id}
                             key={item.id}
                             tv={tv}

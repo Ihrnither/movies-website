@@ -22,10 +22,7 @@ const PopularPage = ({ data, tv, pageNumber }) => {
         {data.map((item) => (
           <Item
             title={item.original_title || item.original_name}
-            releaseDate={
-              (item.release_date ? item.release_date : "0000-00-00") ||
-              item.first_air_date
-            }
+            releaseDate={item.release_date || item.first_air_date || "Unknown"}
             image={item.backdrop_path || item.poster_path}
             id={item.id}
             key={item.id}

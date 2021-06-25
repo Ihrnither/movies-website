@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  height: calc(100% - 80px);
+  user-select: none;
+}
+
+.bgImg {
+  width: 100%;
+  height: 100vh;
+  transform: translateY(-80px);
+  object-fit: cover;
+  object-position: center;
+}
+
+.infoContainer {
+  position: absolute;
+  top: 35%;
+  left: 10%;
+}
+
+.trailerButton {
+  border-radius: 24px !important;
+}
+
+.sectionContainer {
+  background: #e9ecef;
+  color: black;
+  transform: translateY(-120px);
+  border-radius: 12px;
+  padding: 0 !important;
+}
+
+.cardContainer {
+  background: white !important;
+  color: black !important;
+}

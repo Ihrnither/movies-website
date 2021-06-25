@@ -37,7 +37,10 @@ function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </ThemeProvider>
       </CustomScrollbar>
-      <NextNprogress color={theme.palette.primary.main} />
+      <NextNprogress
+        color={theme.palette.primary.main}
+        options={{ showSpinner: false }}
+      />
     </>
   );
 }
