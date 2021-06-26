@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: calc(100% - 80px);
+  height: calc(100% - 220px);
   user-select: none;
 }
 
@@ -26,7 +26,7 @@
 .sectionContainer {
   background: #e9ecef;
   color: black;
-  transform: translateY(-120px);
+  transform: translateY(-1px);
   border-radius: 12px;
   padding: 0 !important;
 }
