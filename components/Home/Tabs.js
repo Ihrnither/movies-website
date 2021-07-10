@@ -83,6 +83,8 @@ export default function SimpleTabs({
                     genres={movie.genre_ids}
                     rating={movie.vote_average}
                     image={movie.poster_path}
+                    mediaType="movies"
+                    id={movie.id}
                   />
                 </Grid>
               );
@@ -101,6 +103,8 @@ export default function SimpleTabs({
                     genres={movie.genre_ids}
                     rating={movie.vote_average}
                     image={movie.poster_path}
+                    mediaType="movies"
+                    id={movie.id}
                   />
                 </Grid>
               );
@@ -119,6 +123,8 @@ export default function SimpleTabs({
                     genres={serie.genre_ids}
                     rating={serie.vote_average}
                     image={serie.poster_path}
+                    mediaType="series"
+                    id={serie.id}
                   />
                 </Grid>
               );
