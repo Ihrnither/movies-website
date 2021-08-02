@@ -6,7 +6,7 @@ const Movie = ({ data, credits }) => {
   return (
     <>
       <Head>
-        <title>M-Box - {data._title}</title>
+        <title>M-Box - {data.title}</title>
       </Head>
       <Dashboard data={data} cast={credits.cast} crew={credits.crew} />
     </>
